@@ -8,7 +8,7 @@
     <script src="/bootstrap.js"></script>
     <link rel="stylesheet" href="/bootstrap.css">
   </head>
-  <body background="https://st.depositphotos.com/1394918/2412/v/950/depositphotos_24120535-stock-illustration-blue-shopping-pattern.jpg">
+  <body>
     <nav class="navbar navbar-light bg-light justify-content-between">
     <a class="navbar-brand">Shopply</a>
     <div class="form-inline">
@@ -17,7 +17,10 @@
       <a href="/cart" class="btn btn-outline-info my-2 my-sm-0" style="margin-left: .5rem !important;">Cart</a>
     </form>
   </nav>
-  <div class="container" style="width:80%; float: left;">
+  <div class="container">
+  <div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-8 col-sm-12" style="width:80%; float: left;">
     <div class="card-deck">
       <div class="row">
         <% let totalPrice = 0 %>
@@ -43,12 +46,17 @@
      </div>
     </div>
   </div>
+  <div class="col-md-3 col-sm-12">
     <% if(totalPrice != 0) { %>
         <h2> TotalPrice = Rs. <%= totalPrice %> </h2>
-        <a href="/placed" class="btn btn-primary">Place Order</a>
+        <a href="/placed" class="btn btn-info">Place Order</a>
     <% } else { %>
         <h2> Cart is empty,please add some items!.
     <% } %>
+  </div>
+</div>
+
+</div>
   <script type="text/javascript">
     $('.incr').click((event) => {
       id = (event.target.id);
