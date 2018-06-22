@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>
+      Shopply
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/jquery.js"></script>
+    <script src="/bootstrap.js"></script>
+    <link rel="stylesheet" href="/bootstrap.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light justify-content-between">
+    <a class="navbar-brand">Shopply</a>
+    <div class="form-inline">
+      <a href="/products" class="btn btn-outline-info my-2 my-sm-0" style="margin-left: .5rem !important;">Home</a>
+      <a href="/admin" class="btn btn-outline-info my-2 my-sm-0" style="margin-left: .5rem !important;">Admin</a>
+      <a href="/cart" class="btn btn-outline-info my-2 my-sm-0" style="margin-left: .5rem !important;">Cart</a>
+    </form>
+  </nav>
+  <div class="row">
+    <div class="container col-md-6 col-sm-12">
+      <form method="post" action="/products">
+        <div class="form-group" >
+          <label for="name">Product Name</label>
+          <input type="text" class="form-control" id="pname" placeholder="Enter Name" name="name">
+        </div>
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="number" class="form-control" id="pprice" placeholder="Enter Price" name="price">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" class="form-control" id="pdescription" placeholder="Describe the product" name="description">
+        </div>
+        <div class="form-group">
+          <label for="url">Image URL</label>
+          <input type="text" class="form-control" id="purl" placeholder="Enter image URL(optional)" name="url">
+        </div>
+        <button type="submit" class="btn btn-info">Add Product</button>
+      </form>
+    </div>
+  </div>
+  </body>
+</html>
