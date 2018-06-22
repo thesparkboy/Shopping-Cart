@@ -22,10 +22,10 @@
       <div class="row">
         <% let totalPrice = 0 %>
         <% for(var i=0; i < products.length; i++) { %>
-          <div class="col-md-6">
+          <div>
            <div class="card" style="margin-bottom: 3em !important;">
              <img class="card-img-top" alt="Card image cap" style = "display: block; width:328px; height: 195px;" src = <%= products[i].url %> >
-             <div class="card-body card-footer">
+             <div class="card-body card-footer" style = "display: block; width:328px;">
                <h5 class="card-title"><%= products[i].name %></h5>
                <p class="card-text"><%= products[i].description %></p>
                <p class="card-text">Price: Rs. <%= products[i].price %></p>
@@ -43,10 +43,12 @@
      </div>
     </div>
   </div>
-  <div class="container">
-  <h2> TotalPrice = <%= totalPrice %> </h2>
-  <a href="/placed" class="btn btn-info">Place Order</a>
-  </div>
+    <% if(totalPrice != 0) { %>
+        <h2> TotalPrice = Rs. <%= totalPrice %> </h2>
+        <a href="/placed" class="btn btn-info">Place Order</a>
+    <% } else { %>
+        <h2> Cart is empty,please add some items!.
+    <% } %>
   <script type="text/javascript">
     $('.incr').click((event) => {
       id = (event.target.id);
