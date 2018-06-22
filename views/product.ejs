@@ -8,7 +8,7 @@
     <script src="/bootstrap.js"></script>
     <link rel="stylesheet" href="/bootstrap.css">
   </head>
-  <body>
+  <body background="https://st.depositphotos.com/1394918/2412/v/950/depositphotos_24120535-stock-illustration-blue-shopping-pattern.jpg">
     <nav class="navbar navbar-light bg-light justify-content-between">
     <a class="navbar-brand">Shopply</a>
     <div class="form-inline">
@@ -23,7 +23,7 @@
         <% for(var i=0; i < products.length; i++) { %>
           <div>
            <div class="card" style="margin-bottom: 3em !important;  ">
-             <img class="card-img-top" alt="Card image cap" style = "display: block; width:328px; height: 195px;" src = <%= products[i].url %> >
+             <img class="card-img-top" alt="Card image cap" style = "display: block; width:350px; height: 195px;" src = <%= products[i].url %> >
              <div class="card-body card-footer">
                <h5 class="card-title"><%= products[i].name %></h5>
                <p class="card-text"><%= products[i].description %></p>
@@ -38,8 +38,6 @@
      </div>
     </div>
   </div>
-  </body>
-
   <script type="text/javascript">
     $('.add').click((event) => {
       id = (event.target.id);
@@ -47,4 +45,5 @@
       alert('Item added to cart successfully');
     })
   </script>
+  </body>
 </html>
