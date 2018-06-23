@@ -9,9 +9,15 @@
     <link rel="stylesheet" href="/bootstrap.css">
   </head>
   <body>
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <a class="navbar-brand">Shopply</a>
+    <div class="form-inline">
+      <a href="/signup" class="btn btn-outline-info my-2 my-sm-0" style="margin-left: .5rem !important;">Signup</a>
+    </div>
+  </nav>
   <div class="row" style="margin-right: 0px !important;margin-left: 0px !important;">
-    <div class="container col-md-6 col-sm-12">
-      <form method="get" action="/products">
+    <div class="container jumbotron col-md-6 col-sm-12">
+      <form method="post" action="/login">
         <div class="form-group" >
           <label for="name">Username</label>
           <input type="text" class="form-control" id="pname" placeholder="admin" name="username">

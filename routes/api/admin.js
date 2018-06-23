@@ -1,7 +1,15 @@
 const Product = require('../../db').Product
 const router = require('express').Router()
 
-router.get('/', (req, res) => {
+var sessionChecker = (req, res, next) => {
+    if (req.session.user) {
+      next();
+    } else {
+      res.redirect('/login');
+    }
+};
+
+router.get('/', sessionChecker, (req, res) => {
         res.render('admin');
 })
 

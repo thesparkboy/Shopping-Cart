@@ -49,15 +49,40 @@ const Product = db.define('products', {
         defaultValue: 0.0
     },
     url : {
-      type: Sequelize.STRING,
-      defaultValue : 'https://cdn.cnn.com/cnnnext/dam/assets/150929101049-black-coffee-stock-exlarge-169.jpg'
+      type: Sequelize.STRING
     }
 })
+
+const User = db.define('users', {
+    username: {
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false,
+        validate: {
+          notEmpty: true
+        }
+    },
+    email: {
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false,
+        validate: {
+          notEmpty: true
+        }
+    },
+    password: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: true
+        }
+    }
+});
 
 db.sync()
     .then(() => console.log('Database synchronized successfully'))
     .catch((err) => console.error("Error creating database"))
 
 exports = module.exports = {
-    Cart, Product
+    Cart, Product, User
 }

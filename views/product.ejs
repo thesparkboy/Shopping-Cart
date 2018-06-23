@@ -15,9 +15,15 @@
       <a href="/products" class="btn btn-outline-info my-2 my-sm-0" style="margin-left: .5rem !important;">Home</a>
       <a href="/admin" class="btn btn-outline-info my-2 my-sm-0" style="margin-left: .5rem !important;">Admin</a>
       <a href="/cart" class="btn btn-outline-info my-2 my-sm-0" style="margin-left: .5rem !important;">Cart</a>
-    </form>
+    </div>
+    <div class="form-inline">
+      <a href="/logout" class="btn btn-outline-info my-2 my-sm-0" style="margin-left: .5rem !important;">Logout</a>
+    </div>
   </nav>
   <div class="container">
+    <% if(products.length == 0) { %>
+      <h3 class="font-italic"> Please add some products from the admin page!! </h3>
+    <% } %>
     <div class="card-deck">
       <div class="row">
         <% for(var i=0; i < products.length; i++) { %>

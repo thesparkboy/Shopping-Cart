@@ -3,7 +3,15 @@ const Cart = require('../../db').Cart
 const Product = require('../../db').Product
 const router = require('express').Router()
 
-router.get('/', (req, res) => {
+var sessionChecker = (req, res, next) => {
+    if (req.session.user) {
+      next();
+    } else {
+      res.redirect('/login');
+    }
+};
+
+router.get('/', sessionChecker, (req, res) => {
   Cart.findAll()
     .then((products) => {
         res.render('cart',{products})
@@ -15,7 +23,7 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
+router.post('/', sessionChecker, (req, res) => {
   Cart.find({ where: { id: req.body.id } }).then(item => {
     if(item){
         item.quantity = item.quantity + 1;
@@ -38,7 +46,7 @@ router.post('/', (req, res) => {
   });
 })
 
-router.post('/add', (req, res) => {
+router.post('/add', sessionChecker, (req, res) => {
   Product.find({ where: { id: req.body.id } }).then(item => {
     req.body.name = item.name
     req.body.description = item.description

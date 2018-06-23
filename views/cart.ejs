@@ -15,45 +15,51 @@
       <a href="/products" class="btn btn-outline-info my-2 my-sm-0" style="margin-left: .5rem !important;">Home</a>
       <a href="/admin" class="btn btn-outline-info my-2 my-sm-0" style="margin-left: .5rem !important;">Admin</a>
       <a href="/cart" class="btn btn-outline-info my-2 my-sm-0" style="margin-left: .5rem !important;">Cart</a>
-    </form>
+    </div>
+    <div class="form-inline">
+      <a href="/logout" class="btn btn-outline-info my-2 my-sm-0" style="margin-left: .5rem !important;">Logout</a>
+    </div>
   </nav>
   <div class="container">
   <div class="row">
   <div class="col-md-1"></div>
-  <div class="col-md-8 col-sm-12" style="width:80%; float: left;">
-    <div class="card-deck">
-      <div class="row">
-        <% let totalPrice = 0 %>
-        <% for(var i=0; i < products.length; i++) { %>
-          <div>
-           <div class="card" style="margin-bottom: 3em !important;">
-             <img class="card-img-top" alt="Card image cap" style = "display: block; width:328px; height: 195px;" src = <%= products[i].url %> >
-             <div class="card-body card-footer" style = "display: block; width:328px;">
-               <h5 class="card-title"><%= products[i].name %></h5>
-               <p class="card-text"><%= products[i].description %></p>
-               <p class="card-text">Price: Rs. <%= products[i].price %></p>
-               <div>
-                 <span>Quantity :
-                 <button type="submit" class='decr btn btn-info' id="<%= products[i].id %>" name="id" value= <%= products[i].id %>>-</button>
-                 <span class="card-text"><%= products[i].quantity %></span>
-                 <button type="submit" class='incr btn btn-info' id="<%= products[i].id %>" name="id" value= <%= products[i].id %> >+</button>
+
+  <% let totalPrice = 0 %>
+  <% for(var i=0; i < products.length; i++) { totalPrice +=  products[i].price * products[i].quantity }%>
+  <% if(totalPrice != 0) { %>
+    <div class="col-md-8 col-sm-12" style="width:80%; float: left;">
+      <div class="card-deck">
+        <div class="row">
+          <% let totalPrice = 0 %>
+          <% for(var i=0; i < products.length; i++) { %>
+            <div>
+             <div class="card" style="margin-bottom: 3em !important;">
+               <img class="card-img-top" alt="Card image cap" style = "display: block; width:328px; height: 195px;" src = <%= products[i].url %> >
+               <div class="card-body card-footer" style = "display: block; width:328px;">
+                 <h5 class="card-title"><%= products[i].name %></h5>
+                 <p class="card-text"><%= products[i].description %></p>
+                 <p class="card-text">Price: Rs. <%= products[i].price %></p>
+                 <div>
+                   <span>Quantity :
+                   <button type="submit" class='decr btn btn-info' id="<%= products[i].id %>" name="id" value= <%= products[i].id %>>-</button>
+                   <span class="card-text"><%= products[i].quantity %></span>
+                   <button type="submit" class='incr btn btn-info' id="<%= products[i].id %>" name="id" value= <%= products[i].id %> >+</button>
+                 </div>
                </div>
              </div>
            </div>
-         </div>
-         <% totalPrice +=  products[i].price * products[i].quantity %>
-       <% } %>
-     </div>
+           <% totalPrice +=  products[i].price * products[i].quantity %>
+         <% } %>
+       </div>
+      </div>
     </div>
-  </div>
-  <div class="col-md-3 col-sm-12">
-    <% if(totalPrice != 0) { %>
-        <h2> TotalPrice = Rs. <%= totalPrice %> </h2>
-        <a href="/placed" class="btn btn-info">Place Order</a>
-    <% } else { %>
-        <h2> Cart is empty,please add some items!.
-    <% } %>
-  </div>
+    <div class="col-md-3 col-sm-12">
+      <h2> TotalPrice = Rs. <%= totalPrice %> </h2>
+      <a href="/placed" class="btn btn-info">Place Order</a>
+    </div>
+  <% } else { %>
+      <h2> Cart is empty,please add some items!.
+  <% } %>
 </div>
 
 </div>

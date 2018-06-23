@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>
+      Shopply
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/jquery.js"></script>
+    <script src="/bootstrap.js"></script>
+    <link rel="stylesheet" href="/bootstrap.css">
+  </head>
+  <body>
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <a class="navbar-brand">Shopply</a>
+    <div class="form-inline">
+      <a href="/login" class="btn btn-outline-info my-2 my-sm-0" style="margin-left: .5rem !important;">Login</a>
+      <a href="/signup" class="btn btn-outline-info my-2 my-sm-0" style="margin-left: .5rem !important;">Signup</a>
+    </div>
+  </nav>
+  <div class="row" style="margin-right: 0px !important;margin-left: 0px !important;">
+    <div class="container jumbotron col-md-6 col-sm-12">
+      <form method="post" action="/signup">
+        <div class="form-group" >
+          <label for="name">Username</label>
+          <input type="text" class="form-control" id="pname" placeholder="admin" name="username">
+        </div>
+        <div class="form-group" >
+          <label for="email">Email</label>
+          <input type="text" class="form-control" id="pemail" placeholder="admin@cb.lk" name="email">
+        </div>
+        <div class="form-group" >
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="ppass" placeholder="*****" name="password">
+        </div>
+        <button type="submit" class="btn btn-info">Sign Up!</button>
+      </form>
+    </div>
+  </div>
+  </body>
+</html>

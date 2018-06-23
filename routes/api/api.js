@@ -1,8 +1,16 @@
-const router = require('express').Router()
-const Cart = require('../../db').Cart,
+const router = require('express').Router(),
+      Cart = require('../../db').Cart,
       Product = require('../../db').Product
 
-router.post('/cartadd', (req, res) => {
+var sessionChecker = (req, res, next) => {
+    if (req.session.user) {
+      next();
+    } else {
+      res.redirect('/login');
+    }
+};
+
+router.post('/cartadd', sessionChecker, (req, res) => {
   req.body.id = parseInt(req.body.id);
   Product.find({ where: { id: req.body.id } }).then(item => {
     req.body.name = item.name
@@ -32,7 +40,7 @@ router.post('/cartadd', (req, res) => {
   });
 })
 
-router.post('/incr', (req, res) => {
+router.post('/incr', sessionChecker, (req, res) => {
   req.body.id = parseInt(req.body.id);
   Cart.find({ where: { id: req.body.id } }).then(item => {
       item.quantity = item.quantity + 1;
@@ -42,10 +50,10 @@ router.post('/incr', (req, res) => {
   });
 })
 
-router.post('/decr', (req, res) => {
+router.post('/decr', sessionChecker, (req, res) => {
   req.body.id = parseInt(req.body.id);
   Cart.find({ where: { id: req.body.id } }).then(item => {
-      if(item.quantity == 1){
+      if(item == null || item.quantity <= 1){
         Cart.destroy({ where: { id: req.body.id }})
         res.send('updated successfully');
       } else {
@@ -57,7 +65,7 @@ router.post('/decr', (req, res) => {
   });
 })
 
-router.get('/placed',(req, res) => {
+router.get('/placed', sessionChecker, (req, res) => {
   Cart.destroy({ where: {}, truncate: true });
   res.render('placed');
 })
